@@ -5,8 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { PrefecturesComponent } from './app/prefectures/prefectures.component';
-import { ChartComponent } from './app/chart/chart.component';
+import { PrefecturesComponent } from './prefectures/prefectures.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
