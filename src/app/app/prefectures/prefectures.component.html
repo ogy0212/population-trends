@@ -1,0 +1,5 @@
+<h3>都道府県</h3>
+<span *ngFor="let pref of prefectures | async">
+  <input type="checkbox" [id]="pref.prefCode" [name]="pref.prefCode" [checked]="pref.checked" (click)="clicked(pref.prefCode)">
+  <label [for]="pref.prefCode">{{ pref.label }}</label>
+</span>
