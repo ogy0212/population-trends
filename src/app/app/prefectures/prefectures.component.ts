@@ -20,7 +20,7 @@ export class PrefecturesComponent implements OnInit {
   }
 
   clicked(prefCode) {
-    this.dataService.toggle(prefCode);
+    this.dataService.toggleChart(prefCode);
   }
 
 }

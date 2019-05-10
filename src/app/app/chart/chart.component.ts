@@ -8,7 +8,6 @@ import { PopulationTrendsService } from 'src/app/population-trends.service';
 })
 export class ChartComponent implements OnInit {
 
-
   constructor(
     private dataService: PopulationTrendsService
   ) { }
