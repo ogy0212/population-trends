@@ -22,16 +22,16 @@ export class PopulationTrendsService {
   public prefecturesDataObservable = this.prefecturesDataSource.asObservable();
   public chartStatusObservable = this.chartStatusSource.asObservable();
 
+  private endPoint = 'https://opendata.resas-portal.go.jp/api/v1';
   private apiKeyHeader = new HttpHeaders({
-    'X-API-KEY':  'XXXXXXXXXXXXXXXXXXXXX',
+    'X-API-KEY':  'XXXXXXXXXXXXXXXXXXXX',
   });
 
   public loadPrefectures() {
     const httpOptions = {
       headers: this.apiKeyHeader
     };
-
-    this.http.get('https://opendata.resas-portal.go.jp/api/v1/prefectures', httpOptions).subscribe(resp => {
+    this.http.get(`${this.endPoint}/prefectures`, httpOptions).subscribe(resp => {
       resp.result.forEach(pref => {
         this.prefecturesData.push({data: [], label: pref.prefName, prefCode: pref.prefCode, checked: false});
       });
@@ -48,7 +48,7 @@ export class PopulationTrendsService {
     const targetPref = this.prefecturesData.find(pref => pref.prefCode === targetPrefCode);
 
     if (!this.chartStatus.chartLabels.length || !targetPref.data.length) {
-      this.http.get('https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear', httpOptions).subscribe(resp => {
+      this.http.get(`${this.endPoint}/population/composition/perYear`, httpOptions).subscribe(resp => {
         this.chartStatus.chartLabels = resp.result.data[0].data.map(item => item.year);
         targetPref.data = resp.result.data[0].data.map(item => item.value);
         this.toggle(targetPref);
